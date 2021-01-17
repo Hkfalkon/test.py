@@ -1,0 +1,39 @@
+def test(filename):
+    f = open(filename,'r')
+    content = f.read()
+
+    lines = content.splitlines()
+
+    testlist=[]
+    m=[]
+    for i in lines:
+        if ":" in i:
+            temp = i.split(":")
+            testlist.append(temp)
+        else:
+            m.append(i)
+
+    output(testlist,m)
+
+
+
+def output(string,m):
+    output_ls=[]
+
+    for i in string:
+        if int(m[0]) % int(i[0]) == 0:
+            output_ls.append(i)
+    sorted_ls = sorted(output_ls, key=lambda x: int(x[0]))
+
+    final_output_ls = []
+    output = ''
+
+    for i in sorted_ls:
+        final_output_ls.append(i[1])
+
+
+    print(output.join(final_output_ls))
+
+
+
+test("input.txt")
